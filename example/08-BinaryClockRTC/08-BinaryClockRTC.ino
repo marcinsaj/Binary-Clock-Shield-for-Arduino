@@ -4,9 +4,19 @@
 // Binary Clock RTC Example
 // 
 // This example demonstrates how to set the RTC time, read the time from RTC,
-// then convert on binary format and show on LEDs.
+// then convert to binary format and show on LEDs.
 // DS3231 RTC Datasheet: https://datasheets.maximintegrated.com/en/ds/DS3231.pdf
-// RTC uses the I2C bus SDA/SCL.
+//
+// Hardware:
+// Arduino Uno, Binary Clock Shield for Arduino
+// INT/SQW connected to Arduino pin 3 / INT1
+// PIEZO connected to Arduino pin 11 PWM
+// S3 button connected to Arduino pin A0
+// S2 button connected to Arduino pin A1
+// S1 button connected to Arduino pin A2
+// LEDs      connected to Arduino pin A3
+// RTC SDA   connected to Arduino pin A4
+// RTC SCL   connected to Arduino pin A5
 
 #include <FastLED.h>          // https://github.com/FastLED/FastLED
 #include <DS3232RTC.h>        // https://github.com/JChristensen/DS3232RTC
@@ -90,11 +100,11 @@ void DecToBinary(int secTemp, int minTemp, int hourTemp)
     
     for(int i = 12; i < 17; i++)                       // Hours
     {
-        BitTime = hourTemp & B00000001;             // Extraction of individual bits 0/1
-        BinaryTime[i] = BitTime;                    // Save bit in Binary time array
-        hourTemp = hourTemp >> 1;                   // Bit shift
+        BitTime = hourTemp & B00000001;                // Extraction of individual bits 0/1
+        BinaryTime[i] = BitTime;                       // Save bit in Binary time array
+        hourTemp = hourTemp >> 1;                      // Bit shift
 
-        if((BinaryTime[i])) leds[i] = CRGB::Blue;   // Show on LEDs
+        if((BinaryTime[i])) leds[i] = CRGB::Blue;      // Show on LEDs
         else leds[i] = CRGB::Black;     
     }
 
@@ -104,11 +114,11 @@ void DecToBinary(int secTemp, int minTemp, int hourTemp)
         BinaryTime[i] = BitTime;
         minTemp = minTemp >> 1;
 
-        if((BinaryTime[i])) leds[i] = CRGB::Green;  // Show on LEDs
+        if((BinaryTime[i])) leds[i] = CRGB::Green;     // Show on LEDs
         else leds[i] = CRGB::Black;       
     }
 
-    for(int i = 0; i < 6; i++)                           // Seconds
+    for(int i = 0; i < 6; i++)                         // Seconds
     {
         BitTime = secTemp & B00000001;            
         BinaryTime[i] = BitTime;                  
