@@ -1,7 +1,7 @@
 // Binary Clock Shield for Arduino by Marcin Saj https://nixietester.com
 // https://github.com/marcinsaj/Binary-Clock-Shield-for-Arduino
 //
-// Piezo Melody Example
+// Piezo Melody "The Imperial March" Example
 // Original code you can find here:
 // http://www.arduino.cc/en/Tutorial/Tone
 // 
@@ -9,9 +9,9 @@
 
 #include "pitches.h"          // Need to create the pitches.h library: https://arduino.cc/en/Tutorial/ToneMelody
 
-#define PIEZO       11        // The number of the Piezo pin. Piezo datasheet: http://bit.ly/PIEZO-KLJ1230
+#define PIEZO      11        // The number of the Piezo pin. Datasheet: http://bit.ly/PIEZO-KLJ1230
 
-// Notes in the melody "The Imperial March":
+// Notes in the melody:
 const int melody[] PROGMEM = 
 {
     NOTE_A4,  NOTE_A4,  NOTE_A4,  NOTE_F4,  NOTE_C5,  NOTE_A4,  NOTE_F4,  NOTE_C5,
@@ -52,14 +52,14 @@ void loop()
         // To calculate the note duration, take one second divided by the note type.
         // e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
         int noteDuration = 1000 / pgm_read_byte(&noteDurations[thisNote]);
-        tone(Piezo, pgm_read_word(&melody[thisNote]), noteDuration);
+        tone(PIEZO, pgm_read_word(&melody[thisNote]), noteDuration);
 
         // To distinguish the notes, set a minimum time between them.
         // The note's duration + 30% seems to work well:
         int pauseBetweenNotes = noteDuration * 1.30;
         delay(pauseBetweenNotes);
         // Stop the tone playing:
-        noTone(Piezo);
+        noTone(PIEZO);
     }
     delay(2000); 
 }
