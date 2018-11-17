@@ -18,7 +18,7 @@
 // RTC SDA   connected to Arduino pin A4
 // RTC SCL   connected to Arduino pin A5
 
-#include "pitches.h"          // Need to create the pitches.h library: https://arduino.cc/en/Tutorial/ToneMelody
+#include "pitches.h"         // Need to create the pitches.h library: https://arduino.cc/en/Tutorial/ToneMelody
 
 #define PIEZO      11        // The number of the Piezo pin. Datasheet: http://bit.ly/PIEZO-KLJ1230
 
