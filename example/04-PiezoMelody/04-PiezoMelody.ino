@@ -6,11 +6,21 @@
 // http://www.arduino.cc/en/Tutorial/Tone
 // 
 // This example shows how to use piezo with the tone() command to generate notes.
+//
+// Hardware:
+// Arduino Uno, Binary Clock Shield for Arduino
+// INT/SQW connected to Arduino pin 3 / INT1
+// PIEZO connected to Arduino pin 11 PWM
+// S3 button connected to Arduino pin A0
+// S2 button connected to Arduino pin A1
+// S1 button connected to Arduino pin A2
+// LEDs      connected to Arduino pin A3
+// RTC SDA   connected to Arduino pin A4
+// RTC SCL   connected to Arduino pin A5
 
-// How to create the pitches.h library, you can find here: https://www.arduino.cc/en/Tutorial/ToneMelody
-#include "pitches.h" 
+#include "pitches.h"         // Need to create the pitches.h library: https://arduino.cc/en/Tutorial/ToneMelody 
 
-#define PIEZO       11        // The number of the Piezo pin. Datasheet: http://bit.ly/PIEZO-KLJ1230
+#define PIEZO       11       // The number of the Piezo pin. Datasheet: http://bit.ly/PIEZO-KLJ1230
 
 // Notes in the melody
 int melody[] = 
