@@ -13,11 +13,21 @@
 //
 // USING palettes is MUCH simpler in practice than in theory, so first just
 // run this sketch, and watch the pretty lights as you then read through
-// the code.  Although this sketch has eight (or more) different color schemes,
-// the entire sketch compiles down to about 6.5K on AVR.
+// the code.  Although this sketch has eight (or more) different color schemes.
 //
 // FastLED provides a few pre-configured color palettes, and makes it
 // extremely easy to make up your own color schemes with palettes.
+//
+// Hardware:
+// Arduino Uno, Binary Clock Shield for Arduino
+// INT/SQW connected to Arduino pin 3 / INT1
+// PIEZO connected to Arduino pin 11 PWM
+// S3 button connected to Arduino pin A0
+// S2 button connected to Arduino pin A1
+// S1 button connected to Arduino pin A2
+// LEDs      connected to Arduino pin A3
+// RTC SDA   connected to Arduino pin A4
+// RTC SCL   connected to Arduino pin A5
 
 #include <FastLED.h>            // https://github.com/FastLED/FastLED
 
