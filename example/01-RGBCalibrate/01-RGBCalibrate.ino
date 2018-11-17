@@ -5,12 +5,12 @@
 //
 // Use this sketch to determine what the RGB ordering for your chipset should be.
 // You should see six LEDs on. If the RGB ordering is correct, you should see 1 red LED, 2 green 
-// LEDs, and 3 blue LEDs.  If you see different colors, the count of each color tells you what the 
-// position for that color in the rgb ordering should be.  So, for example, if you see 1 Blue, and 2
-// Red, and 3 Green LEDs then the rgb ordering should be BRG (Blue, Red, Green).  
+// LEDs, and 3 blue LEDs.  If you see different colors, the count of each color tells you what 
+// the position for that color in the rgb ordering should be.  So, for example, if you see
+// 1 Blue, 2 Red, and 3 Green LEDs then the rgb ordering should be BRG (Blue, Red, Green).  
 //
-// You can then test this ordering by setting the RGB ordering in the COLOR_ORDER line below to the new ordering
-// and it should come out correctly, 1 red, 2 green, and 3 blue.
+// You can then test this ordering by setting the RGB ordering in the COLOR_ORDER line below
+// to the new ordering and it should come out correctly, 1 red, 2 green, and 3 blue.
 //
 // Original code you can find here: https://github.com/FastLED/FastLED/tree/master/examples/RGBCalibrate
 
