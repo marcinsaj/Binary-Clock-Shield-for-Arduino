@@ -49,20 +49,22 @@
 //    +----|LED 05|---<---|LED 04|---<---|LED 03|---<---|LED 02|---<---|LED 01|---<---|LED 0 |--<-- DATA_PIN 
 //         +------+       +------+       +------+       +------+       +------+       +------+
 
-#include <FastLED.h>          // https://github.com/FastLED/FastLED
-#include <DS3232RTC.h>        // https://github.com/JChristensen/DS3232RTC
-#include <Streaming.h>        // http://arduiniana.org/libraries/streaming/                            
-#include "pitches.h"          // Need to create the pitches.h library: https://arduino.cc/en/Tutorial/ToneMelody
+#include <FastLED.h>            // https://github.com/FastLED/FastLED
+#include <DS3232RTC.h>          // https://github.com/JChristensen/DS3232RTC
+#include <Streaming.h>          // http://arduiniana.org/libraries/streaming/                            
+#include "pitches.h"            // Need to create the pitches.h library: https://arduino.cc/en/Tutorial/ToneMelody
 
-#define INT         3         // Interrupt. Arduino pin no.3 <-> Shield RTC INT/SQW pin           
-#define PIEZO       11        // The number of the Piezo pin
-#define LED_PIN     A3        // Data pin that LEDs data will be written out over
-#define NUM_LEDS    17        // All LEDs on shield 
-#define BRIGHTNESS  30        // The best tested LEDs brightness 20-60
-#define LED_TYPE    WS2812B   // Datasheet: http://bit.ly/LED-WS2812B
-#define COLOR_ORDER GRB       // For color ordering use this sketch: http://bit.ly/RGBCalibrate   
+#define INT           3         // Interrupt. Arduino pin no.3 <-> Shield RTC INT/SQW pin           
+#define PIEZO         11        // The number of the Piezo pin
+#define LED_PIN       A3        // Data pin that LEDs data will be written out over
+#define NUM_LEDS      17        // All LEDs on shield 
+#define BRIGHTNESS    30        // The best tested LEDs brightness 20-60
+#define LED_TYPE      WS2812B   // Datasheet: http://bit.ly/LED-WS2812B
+#define COLOR_ORDER   GRB       // For color ordering use this sketch: http://bit.ly/RGBCalibrate   
 
-#define S1  A2                // Push buttons connected to the A0, A1, A2 Arduino pins
+#define ALARM_REPEAT  3         // How many times play the melody alarm
+
+#define S1  A2                  // Push buttons connected to the A0, A1, A2 Arduino pins
 #define S2  A1    
 #define S3  A0 
 
@@ -542,39 +544,52 @@ void convertDecToBinaryAndDisplay(int bottomRow, int middleRow, int upperRow)
 ////////////////////////////////////////////////////////////////////////////////////
 void playAlarm () 
 {
+    bool stopAlarm = LOW;
+    int howManyTimes = 0;
     unsigned long millis_time_now = 0; 
-    // Count how many notes are in melody
+    
+    // Count how many notes are in the melody
     int allNotes = sizeof(noteDurations);
-    
-    for (int thisNote = 0; thisNote < allNotes; thisNote++) 
-    {    
-        // To calculate the note duration, take one second divided by the note type.
-        // e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
-        int noteDuration = 1000 / pgm_read_byte(&noteDurations[thisNote]);
-        tone(PIEZO, pgm_read_word(&melodyAlarm[thisNote]), noteDuration);
 
-        // To distinguish the notes, set a minimum time between them.
-        // The note's duration + 30% seems to work well:
-        int pauseBetweenNotes = noteDuration * 1.30;
+    while ((howManyTimes < ALARM_REPEAT) & (stopAlarm == LOW))
+    {
+        for (int thisNote = 0; thisNote < allNotes; thisNote++) 
+        {    
+            // To calculate the note duration, take one second divided by the note type.
+            // e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
+            int noteDuration = 1000 / pgm_read_byte(&noteDurations[thisNote]);
+            tone(PIEZO, pgm_read_word(&melodyAlarm[thisNote]), noteDuration);
 
-        // Millis time start
-        millis_time_now = millis();
+            // To distinguish the notes, set a minimum time between them.
+            // The note's duration + 30% seems to work well:
+            int pauseBetweenNotes = noteDuration * 1.30;
+
+            // Millis time start
+            millis_time_now = millis();
     
-        // Pause between notes - we can use the delay() function but it will be better to use millis()
-        // Wait - pauseBetweenNotes
-        while(millis() < millis_time_now + pauseBetweenNotes)
-        {
-            // Update the display if an interrupt occurs
-            if (RTCinterruptWasCalled) 
-            { 
-                RTCinterruptWasCalled = false;
-                getAndDisplayTime();
-                serialDebugTime();   
+            // Pause between notes
+            while(millis() < millis_time_now + pauseBetweenNotes)
+            {
+                // Stop alarm melody and go to main menu
+                if (checkS2() == HIGH)
+                {
+                    // Prepare for escape to main menu
+                    settingsLevel = 0;              
+                    settingsOption = 0; 
+                    stopAlarm = 1; 
+
+                    // Stop the tone playing
+                    noTone(PIEZO);
+                }
             }
-        }
 
-        // Stop the tone playing:
-        noTone(PIEZO);
+            // Escape to main menu
+            if (stopAlarm == HIGH) break;
+
+            // Stop the tone playing
+            noTone(PIEZO);
+        }
+        howManyTimes++;
     }  
 }
 
