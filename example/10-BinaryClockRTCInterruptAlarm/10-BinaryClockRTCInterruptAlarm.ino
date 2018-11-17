@@ -4,7 +4,7 @@
 // Binary Clock RTC with Interrupt and Alarm Example
 // This example demonstrates how to use RTC Alarm option with piezo melody.
 // 
-// Use this sketch to set/read RTC time. Set Alarm every minute and play alarm melody.
+// Use this sketch to set/read RTC time. Set alarm and play alarm melody every minute.
 // How to use piezo with the tone() command to generate notes you can find here:
 // http://www.arduino.cc/en/Tutorial/Tone
 // PIEZO Datasheet: http://bit.ly/PIEZO-KLJ1230
