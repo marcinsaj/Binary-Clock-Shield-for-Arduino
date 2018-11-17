@@ -17,8 +17,8 @@
 
 CRGB leds[NUM_LEDS];          // Define the array of LEDs
 
-byte BinaryTime[17];          // Binary time array
-byte hours = 0, minutes = 0, seconds = 0, BitTime; 
+byte BinaryTime[17];          // Binary time array 
+byte hours = 0, minutes = 0, seconds = 0; 
 
 void setup() 
 {  
@@ -87,7 +87,9 @@ void printTime()
 // Convert time from DEC to BIN format and display on LEDs
 void DecToBinary(int secTemp, int minTemp, int hourTemp) 
 {  
-    for(int i=12; i <17; i++)                       // Hours
+    bool BitTime = 0;
+    
+    for(int i = 12; i < 17; i++)                       // Hours
     {
         BitTime = hourTemp & B00000001;             // Extraction of individual bits 0/1
         BinaryTime[i] = BitTime;                    // Save bit in Binary time array
@@ -97,7 +99,7 @@ void DecToBinary(int secTemp, int minTemp, int hourTemp)
         else leds[i] = CRGB::Black;     
     }
 
-    for(int i=6; i <12; i++)                        // Minutes
+    for(int i = 6; i < 12; i++)                        // Minutes
     {
         BitTime = minTemp & B00000001;
         BinaryTime[i] = BitTime;
@@ -107,7 +109,7 @@ void DecToBinary(int secTemp, int minTemp, int hourTemp)
         else leds[i] = CRGB::Black;       
     }
 
-    for(int i; i <6; i++)                           // Seconds
+    for(int i = 0; i < 6; i++)                           // Seconds
     {
         BitTime = secTemp & B00000001;            
         BinaryTime[i] = BitTime;                  
