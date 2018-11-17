@@ -88,7 +88,7 @@ void DecToBinary(int secTemp, int minTemp, int hourTemp)
 {  
     bool BitTime = 0;
     
-    for(int i=12; i <17; i++)                       // Hours
+    for(int i = 12; i < 17; i++)                       // Hours
     {
         BitTime = hourTemp & B00000001;             // Extraction of individual bits 0/1
         BinaryTime[i] = BitTime;                    // Save bit in Binary time array
@@ -98,7 +98,7 @@ void DecToBinary(int secTemp, int minTemp, int hourTemp)
         else leds[i] = CRGB::Black;     
     }
 
-    for(int i=6; i <12; i++)                        // Minutes
+    for(int i = 6; i < 12; i++)                        // Minutes
     {
         BitTime = minTemp & B00000001;
         BinaryTime[i] = BitTime;
@@ -108,7 +108,7 @@ void DecToBinary(int secTemp, int minTemp, int hourTemp)
         else leds[i] = CRGB::Black;       
     }
 
-    for(int i; i <6; i++)                           // Seconds
+    for(int i = 0; i < 6; i++)                           // Seconds
     {
         BitTime = secTemp & B00000001;            
         BinaryTime[i] = BitTime;                  
