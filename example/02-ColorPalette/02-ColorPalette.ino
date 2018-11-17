@@ -42,7 +42,7 @@ void setup()
     // Important power-up safety delay
     delay(3000); 
 
-    // Limit draw to 450mA at 5V of power draw
+    // Limit my draw to 450mA at 5V of power draw
     FastLED.setMaxPowerInVoltsAndMilliamps(5,450);
   
     FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection( TypicalLEDStrip );
