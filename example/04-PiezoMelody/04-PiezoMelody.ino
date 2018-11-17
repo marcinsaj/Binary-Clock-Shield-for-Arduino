@@ -28,7 +28,7 @@ byte noteDurations[] =
 
 void setup() 
 {
-  // Nothing to setup this time
+    // Nothing to setup this time
 }
 
 void loop() 
