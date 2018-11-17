@@ -20,13 +20,12 @@
 
 CRGB leds[NUM_LEDS];          // Define the array of LEDs
 
-// t variable for Arduino Time Library
-time_t t;
+byte BinaryTime[17];          // Binary time array
+
+time_t t; // t variable for Arduino Time Library
 // See the Arduino Time Library for details on the tmElements_t structure:    
 // http://playground.arduino.cc/Code/Time
 // https://github.com/PaulStoffregen/Time                   
-
-byte BinaryTime[17];          // Binary time array
 
 void setup() 
 {  
