@@ -32,7 +32,7 @@ void setup()
     // Limit draw to 450mA at 5V of power draw
     FastLED.setMaxPowerInVoltsAndMilliamps(5,450);
     
-    // LEDs configurations
+    // Initialize LEDs
     FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS);
 
     // Brightness settings
