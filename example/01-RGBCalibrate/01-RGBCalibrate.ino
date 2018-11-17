@@ -13,6 +13,17 @@
 //
 // You can then test this ordering by setting the RGB ordering in the addLeds line below to the new ordering
 // and it should come out correctly, 1 red, 2 green, and 3 blue.
+//
+// Hardware:
+// Arduino Uno, Binary Clock Shield for Arduino
+// INT/SQW connected to Arduino pin 3 / INT1
+// PIEZO connected to Arduino pin 11 PWM
+// S3 button connected to Arduino pin A0
+// S2 button connected to Arduino pin A1
+// S1 button connected to Arduino pin A2
+// LEDs      connected to Arduino pin A3
+// RTC SDA   connected to Arduino pin A4
+// RTC SCL   connected to Arduino pin A5
 
 #include <FastLED.h>          // https://github.com/FastLED/FastLED
 
