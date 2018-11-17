@@ -6,7 +6,7 @@
 // This example demonstrates how to use Square Wave RTC INT/SQW output with Arduino interrupt. 
 // Use this sketch to set RTC time, read the time from RTC, convert to binary format and show on LEDs.
 // A falling edge at the RTC INT/SQW output causes an interrupt, 
-// which is uses for periodically - 1 per second - reading time from RTC.
+// which is uses for regular - 1 per second - reading time from RTC.
 //
 // DS3231 RTC Datasheet: http://bit.ly/DS3231-RTC
 //
