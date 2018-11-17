@@ -97,9 +97,7 @@ void DecToBinary(int secTemp, int minTemp, int hourTemp)
         hourTemp = hourTemp >> 1;                   // Bit shift
 
         if((BinaryTime[i])) leds[i] = CRGB::Blue;   // Show on LEDs
-        else leds[i] = CRGB::Black; 
-          
-        FastLED.show();     
+        else leds[i] = CRGB::Black;     
     }
 
     for(int i=6; i <12; i++)                        // Minutes
@@ -109,9 +107,7 @@ void DecToBinary(int secTemp, int minTemp, int hourTemp)
         minTemp = minTemp >> 1;
 
         if((BinaryTime[i])) leds[i] = CRGB::Green;  // Show on LEDs
-        else leds[i] = CRGB::Black; 
-          
-        FastLED.show();     
+        else leds[i] = CRGB::Black;       
     }
 
     for(int i; i <6; i++)                           // Seconds
@@ -122,7 +118,6 @@ void DecToBinary(int secTemp, int minTemp, int hourTemp)
     
         if((BinaryTime[i])) leds[i] = CRGB::Red;    // Show on LEDs
         else leds[i] = CRGB::Black; 
-          
-        FastLED.show();        
-    } 
+    }  
+    FastLED.show();
 }
