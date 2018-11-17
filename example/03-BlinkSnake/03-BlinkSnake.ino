@@ -7,6 +7,17 @@
 // https://github.com/FastLED/FastLED/tree/master/examples/FirstLight
 // 
 // This example shows how to turn on/off a single LED and move a dot along the strip of LEDs.
+//
+// Hardware:
+// Arduino Uno, Binary Clock Shield for Arduino
+// INT/SQW connected to Arduino pin 3 / INT1
+// PIEZO connected to Arduino pin 11 PWM
+// S3 button connected to Arduino pin A0
+// S2 button connected to Arduino pin A1
+// S1 button connected to Arduino pin A2
+// LEDs      connected to Arduino pin A3
+// RTC SDA   connected to Arduino pin A4
+// RTC SCL   connected to Arduino pin A5
 
 #include <FastLED.h>            // https://github.com/FastLED/FastLED
 
