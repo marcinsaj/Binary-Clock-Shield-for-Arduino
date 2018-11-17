@@ -52,8 +52,8 @@ unsigned long lastDebounceTime = 0;  // The last time the output pin was toggled
 unsigned long debounceDelay = 50;    // The debounce time; increase if the output flickers
 
 
-void setup() {
-  
+void setup() 
+{
     // Important power-up safety delay
     delay(3000);     
   
