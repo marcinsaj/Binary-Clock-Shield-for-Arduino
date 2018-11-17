@@ -2,6 +2,7 @@
 // https://github.com/marcinsaj/Binary-Clock-Shield-for-Arduino
 //
 // RGB Calibration Example
+// Original code you can find here: https://github.com/FastLED/FastLED/tree/master/examples/RGBCalibrate
 //
 // Use this sketch to determine what the RGB ordering for your chipset should be.
 // You should see six leds on.  If the RGB ordering is correct, you should see 1 red led, 2 green 
@@ -11,8 +12,6 @@
 //
 // You can then test this ordering by setting the RGB ordering in the addLeds line below to the new ordering
 // and it should come out correctly, 1 red, 2 green, and 3 blue.
-//
-// Original code you can find here: https://github.com/FastLED/FastLED/tree/master/examples/RGBCalibrate
 
 #include <FastLED.h>          // https://github.com/FastLED/FastLED
 
