@@ -78,10 +78,7 @@ void printTime()
     Serial << ("BIN:"); 
     for(int i=16; i >= 0; i--) 
     {                 
-        if(i == 11 || i == 5) 
-        {
-            Serial << (" ");       
-        }
+        if(i == 11 || i == 5) Serial << (" ");       
         Serial << (BinaryTime[i]); 
     }
     Serial << endl;
