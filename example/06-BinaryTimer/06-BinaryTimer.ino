@@ -17,7 +17,7 @@
 
 CRGB leds[NUM_LEDS];          // Define the array of LEDs
 
-byte BinaryTime[17];
+byte BinaryTime[17];          // Binary time array
 byte hours = 0, minutes = 0, seconds = 0, BitTime; 
 
 void setup() 
