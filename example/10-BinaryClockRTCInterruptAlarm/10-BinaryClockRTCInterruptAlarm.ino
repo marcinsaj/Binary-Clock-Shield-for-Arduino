@@ -11,8 +11,7 @@
 //
 // A falling edge at the RTC INT/SQW output causes an interrupt, 
 // which is uses for regular - 1 per second - reading time from RTC and 
-// checking alarm status flag 'A2F'. Since we use RTC SQW output for
-// regular reading current time, the alarm interrupt flag 'A2IE' should be clear/disable.
+// checking alarm status flag 'A2F'.
 // Check RTC datasheet page 11-13 http://bit.ly/DS3231-RTC
 //
 // Hardware:
@@ -95,9 +94,8 @@ void setup()
   
     // Clear the alarm status flag 'A2F'
     RTC.alarm(ALARM_2);
-
-    // Since we use SQW_PIN for regular reading current time, 
-    // the alarm interrupt flag 'A2IE' should be clear/disable
+ 
+    // This time we do not use the interrupt flag 'A2IE' so we can clear/disable it
     RTC.alarmInterrupt(ALARM_2, false);
   
     // Enable 1 Hz square wave SQW output
