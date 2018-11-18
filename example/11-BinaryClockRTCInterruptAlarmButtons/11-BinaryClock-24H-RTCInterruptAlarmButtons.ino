@@ -508,8 +508,7 @@ void convertDecToBinaryAndDisplay(int bottomRow, int middleRow, int upperRow)
         upperRow = upperRow >> 1;                       // Bit shift
 
         if(binaryArray[i] == 1) leds[i] = CRGB::Blue;   // If 1 - turn on LED 
-        else leds[i] = CRGB::Black;                     // If 0 - turn off LED
-             
+        else leds[i] = CRGB::Black;                     // If 0 - turn off LED             
     }
 
     for(int i = 6; i < 12; i++)                         // M - middle row
