@@ -279,7 +279,7 @@ void settingsMenu ()
             countButtonPressed--;                   // Decrement current value e.g. hour, minute, second, alarm status
             checkCurrentModifiedValueFormat();      // Check if the value has exceeded the range e.g minute = 60 and correct
             displayCurrentModifiedValue();          // Display current modified value on LEDs 
-            serialDebugCurrentModifiedValue();        // Use serial monitor for showing settings
+            serialDebugCurrentModifiedValue();      // Use serial monitor for showing settings
         }
 
         // Increment
@@ -288,7 +288,7 @@ void settingsMenu ()
             countButtonPressed++;                   // Increment current value e.g. hour, minute, second, alarm status
             checkCurrentModifiedValueFormat();      // Check if the value has exceeded the range e.g minute = 60 and correct
             displayCurrentModifiedValue();          // Display current modified value on LEDs  
-            serialDebugCurrentModifiedValue();        // Use serial monitor for showing settings 
+            serialDebugCurrentModifiedValue();      // Use serial monitor for showing settings 
         }             
 
         // Save
