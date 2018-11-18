@@ -12,7 +12,6 @@
 // Alarm causes melody to play.  
 // How to use piezo with the tone() command to generate notes you can find here:
 // http://www.arduino.cc/en/Tutorial/Tone
-// PIEZO Datasheet: http://bit.ly/PIEZO-KLJ1230
 //
 // A falling edge at the RTC INT/SQW output causes an interrupt, 
 // which is uses for regular - 1 per second - reading time from RTC and 
