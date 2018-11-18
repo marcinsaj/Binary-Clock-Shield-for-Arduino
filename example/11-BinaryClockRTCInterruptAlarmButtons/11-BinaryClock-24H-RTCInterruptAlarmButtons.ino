@@ -25,7 +25,7 @@
 //
 // Hardware:
 // Arduino Uno, Binary Clock Shield for Arduino
-// INT/SQW   connected to Arduino pin 3 / INT1
+// INT/SQW   connected to Arduino pin 3  INT1
 // PIEZO     connected to Arduino pin 11 PWM
 // S3 button connected to Arduino pin A0
 // S2 button connected to Arduino pin A1
