@@ -63,9 +63,9 @@ void loop()
     // Show it
     convertToBinaryAndDisplay ();
 
-    // Wait 60 seconds
+    // RTC does a temperature conversion once every 64 seconds
     int counter = 0;
-    while (counter < 2) 
+    while (counter < 64) 
     {
         float time_now = millis();
         while(millis() < time_now + 1000){}
