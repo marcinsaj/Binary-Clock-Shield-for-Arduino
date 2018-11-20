@@ -1,7 +1,7 @@
 // Binary Clock Shield for Arduino by Marcin Saj https://nixietester.com
 // https://github.com/marcinsaj/Binary-Clock-Shield-for-Arduino
 //
-// Binary Thermometer
+// Binary Thermometer °C
 // This example demonstrates how to use RTC integrated temperature compensated
 // crystal oscillator a simple thermometer. 
 // The DS3231 does a temperature conversion once every 64 seconds, temperature is 
@@ -34,7 +34,7 @@ CRGB leds[NUM_LEDS];          // Define the array of LEDs
 
 byte BinaryTemperature[17];   // Binary temperature array 
 
-// The accuracy of the thermometer is +/- 3.00 ° C, so it is better to compare the results 
+// The accuracy of the thermometer is +/- 3.00°C, so it is better to compare the results 
 // with another thermometer and apply the correction value   
 float Correction = 3.00;      // +/- 3.00°C
 float Celsius;
