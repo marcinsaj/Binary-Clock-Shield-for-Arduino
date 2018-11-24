@@ -18,9 +18,9 @@
 // checking alarm status flag 'A2F'. Since we use RTC INT/SQW output for
 // regular reading current time - square wave output SQW option, 
 // global interrupt flag INTCN is set to 0, this disables the interrupts from both RTC alarms.
-// Referring to the documentation: when the INTCN is set to logic 0, the 'A2F' bit does not initiate an interrupt signal. 
-// By turning off the interrupts from the alarms, we can use the interrupt flag 'A2IE' as an info flag 
-// whether the alarm has been activated or not. 
+// Referring to the documentation: when the INTCN is set to logic 0, 
+// the 'A2F' bit does not initiate an interrupt signal. By turning off the interrupts from the alarms, 
+// we can use the interrupt flag 'A2IE' as an info flag whether the alarm has been activated or not. 
 // Check RTC datasheet page 11-13 http://bit.ly/DS3231-RTC
 //
 // Hardware:
