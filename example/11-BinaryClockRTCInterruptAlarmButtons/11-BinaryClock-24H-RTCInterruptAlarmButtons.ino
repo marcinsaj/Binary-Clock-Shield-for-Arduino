@@ -56,6 +56,7 @@
 #include <Streaming.h>          // http://arduiniana.org/libraries/streaming/                            
 #include "pitches.h"            // Need to create the pitches.h library: https://arduino.cc/en/Tutorial/ToneMelody
 
+#define DEBUG         1         // If 1 - serial debug ON, if 0 serial debug OFF  
 #define INT           3         // Interrupt. Arduino pin no.3 <-> Shield RTC INT/SQW pin           
 #define PIEZO         11        // The number of the Piezo pin
 #define LED_PIN       A3        // Data pin that LEDs data will be written out over
@@ -147,7 +148,9 @@ int alarmStatus;
 //################################################################################//
 void setup()
 {
+  #if DEBUG
     Serial.begin(115200);
+  #endif
   
     // Important power-up safety delay
     delay(3000); 
@@ -193,12 +196,14 @@ void loop ()
     if (RTCinterruptWasCalled & (settingsOption == 0))    // Display time but not during settings
     {
         RTCinterruptWasCalled = false;                    // Clear the interrupt flag
-        getAndDisplayTime();                              // Get time from RTC, convert to binary format and display on LEDs  
+        getAndDisplayTime();                              // Get time from RTC, convert to binary format and display on LEDs
         serialDebugTime();                                // Use serial monitor for showing current time 
    
         if ((RTC.alarm(ALARM_2)) & (alarmStatus == 2)) 
-        {
+        {   
+          #if DEBUG
             Serial << "   ALARM!\n";
+          #endif  
             playAlarm();
         }                    
     }        
@@ -317,7 +322,7 @@ void settingsMenu ()
             else                                    // If you do not go to the main menu yet
             {
                 checkCurrentModifiedValueFormat();  // Check if the value has exceeded the range e.g minute = 60 and correct                  
-                setCurrentModifiedValue();          // Assign next variable for modify +/- hour => minute => second / alarm status               
+                setCurrentModifiedValue();          // Assign next variable for modify +/- hour => minute => second / alarm status
                 displayCurrentModifiedValue();      // Display current modified value on LEDs                
                 serialDebugSettings();              // Use serial monitor for showing settings
             }
@@ -603,7 +608,6 @@ void playAlarm ()
 ////////////////////////////////////////////////////////////////////////////////////
 int checkS1() 
 {
-
     // Read the state of the push button into a local variable:
     bool currentreadS1 = digitalRead(S1);
 
@@ -647,7 +651,6 @@ int checkS1()
 ////////////////////////////////////////////////////////////////////////////////////
 int checkS2() 
 {
-
     // Read the state of the push button into a local variable:
     bool currentreadS2 = digitalRead(S2);
 
@@ -738,6 +741,7 @@ int checkS3()
 ////////////////////////////////////////////////////////////////////////////////////
 void serialDebugTime() 
 {
+  #if DEBUG
     Serial << ("DEC:");
     Serial << ((hour(t)<10) ? "0" : "") << _DEC(hour(t)) << (":");
     Serial << ((minute(t)<10) ? "0" : "") << _DEC(minute(t)) << (":");
@@ -750,6 +754,7 @@ void serialDebugTime()
         Serial << binaryArray[i]; 
     }
     Serial << endl;
+  #endif 
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -757,6 +762,7 @@ void serialDebugTime()
 ////////////////////////////////////////////////////////////////////////////////////
 void serialDebugStartInfo ()
 {
+  #if DEBUG
     Serial << F("-------------------------------------") << endl; 
     Serial << F("------- BINARY CLOCK SHIELD ---------") << endl;
     Serial << F("----------- FOR ARDUINO -------------") << endl;
@@ -779,14 +785,16 @@ void serialDebugStartInfo ()
         Serial << ("#");    
     }
       
-    Serial << endl << endl;  
+    Serial << endl << endl; 
+  #endif  
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
 // Show alarm settings
 ////////////////////////////////////////////////////////////////////////////////////
 void serialDebugSettings ()
-{    
+{
+  #if DEBUG    
     if (settingsOption == 1)
     {
         Serial << endl << endl;
@@ -828,7 +836,8 @@ void serialDebugSettings ()
             Serial << (countButtonPressed == 1 ? "OFF" : "");        
             Serial << (" ");
         }
-    }     
+    }
+  #endif       
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -836,6 +845,7 @@ void serialDebugSettings ()
 ////////////////////////////////////////////////////////////////////////////////////
 void serialDebugAlarmInfo ()
 {
+  #if DEBUG 
     Serial << endl << endl;
     Serial << F("-------------------------------------") << endl; 
     Serial << F("---- Alarm Time: "); 
@@ -849,14 +859,16 @@ void serialDebugAlarmInfo ()
     Serial << (alarmStatus == 1 ? "OFF" : "");
     Serial << endl;
     Serial << F("-------------------------------------") << endl;      
-    Serial << endl;   
+    Serial << endl; 
+  #endif   
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
 // Show current alarm status during settings
 ////////////////////////////////////////////////////////////////////////////////////
 void serialDebugCurrentModifiedValue ()
-{      
+{    
+  #if DEBUG  
     if((settingsLevel == 3) & (settingsOption == 3))
     {
         Serial << (countButtonPressed == 2 ? "ON" : ""); 
@@ -867,5 +879,6 @@ void serialDebugCurrentModifiedValue ()
         Serial << countButtonPressed;   
     }
     
-    Serial << (" "); 
+    Serial << (" ");
+  #endif   
 }
