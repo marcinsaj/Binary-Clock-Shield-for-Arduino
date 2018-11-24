@@ -8,7 +8,7 @@
 // *It is recommended that the first start should be carried out with the serial terminal, 
 // for better knowing the setting options. 
 //
-// The buttons allow you to set the time and alarm - exact hour, minute, second/alarm status.
+// The buttons allows you to set the time and alarm - exact hour, minute, second/alarm status.
 // Alarm causes melody to play.  
 // How to use piezo with the tone() command to generate notes you can find here:
 // http://www.arduino.cc/en/Tutorial/Tone
