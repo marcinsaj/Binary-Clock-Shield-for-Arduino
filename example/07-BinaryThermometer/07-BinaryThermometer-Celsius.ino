@@ -3,7 +3,7 @@
 //
 // Binary Thermometer °C
 // This example demonstrates how to use RTC integrated temperature compensated
-// crystal oscillator a simple thermometer. 
+// crystal oscillator as a simple thermometer. 
 // The DS3231 does a temperature conversion once every 64 seconds, temperature is 
 // represented with a resolution of 0.25°C. To simplify the temperature display, 
 // it is rounded to one decimal place. 
