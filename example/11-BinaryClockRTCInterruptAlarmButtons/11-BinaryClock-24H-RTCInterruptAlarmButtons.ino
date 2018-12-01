@@ -545,8 +545,7 @@ void convertDecToBinaryAndDisplay(int bottomRow, int middleRow, int upperRow)
 //################################################################################//
 
 ////////////////////////////////////////////////////////////////////////////////////
-// During playing the alarm melody, 
-// interrupt service and time display function are called
+// During playing the alarm melody, time display function is disabled
 ////////////////////////////////////////////////////////////////////////////////////
 void playAlarm () 
 {
@@ -590,7 +589,7 @@ void playAlarm ()
             }
 
             // Escape to main menu
-            if (stopAlarm == HIGH) break;
+            if (stopAlarm == 1) break;
 
             // Stop the tone playing
             noTone(PIEZO);
