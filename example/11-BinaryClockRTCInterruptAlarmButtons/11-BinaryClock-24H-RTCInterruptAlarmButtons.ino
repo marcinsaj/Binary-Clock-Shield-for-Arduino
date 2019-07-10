@@ -3,7 +3,6 @@
 //
 // Binary Clock RTC 24H with Interrupt, Alarm and Buttons Example
 // This example demonstrates complete Binary Clock with Time and Alarm settings
-// Here you can find 12H AM/PM Binary Clock: http://bit.ly/BinaryClock12H 
 //
 // *It is recommended that the first start should be carried out with the serial terminal, 
 // for better knowing the setting options. 
