@@ -52,7 +52,7 @@
 
 #include <FastLED.h>            // https://github.com/FastLED/FastLED
 #include <DS3232RTC.h>          // https://github.com/JChristensen/DS3232RTC
-#include <Streaming.h>          // http://arduiniana.org/libraries/streaming/                            
+#include <Streaming.h>          // https://github.com/janelia-arduino/Streaming                            
 #include "pitches.h"            // Need to create the pitches.h library: https://arduino.cc/en/Tutorial/ToneMelody
 
 #define DEBUG         1         // If 1 - serial debug ON, if 0 serial debug OFF  
