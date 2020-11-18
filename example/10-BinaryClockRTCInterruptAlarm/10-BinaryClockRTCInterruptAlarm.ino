@@ -28,7 +28,7 @@
 
 #include <FastLED.h>          // https://github.com/FastLED/FastLED
 #include <DS3232RTC.h>        // https://github.com/JChristensen/DS3232RTC
-#include <Streaming.h>        // http://arduiniana.org/libraries/streaming/
+#include <Streaming.h>        // https://github.com/janelia-arduino/Streaming
 #include "pitches.h"          // Need to create the pitches.h library: https://arduino.cc/en/Tutorial/ToneMelody
 
 #define INT         3         // Interrupt. Arduino pin no.3 <-> Shield RTC INT/SQW pin           
