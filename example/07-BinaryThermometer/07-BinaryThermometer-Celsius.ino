@@ -22,7 +22,7 @@
 
 #include <FastLED.h>          // https://github.com/FastLED/FastLED
 #include <DS3232RTC.h>        // https://github.com/JChristensen/DS3232RTC
-#include <Streaming.h>        // http://arduiniana.org/libraries/streaming/
+#include <Streaming.h>        // https://github.com/janelia-arduino/Streaming
 
 #define LED_PIN     A3        // Data pin that LEDs data will be written out over
 #define NUM_LEDS    17        // Only middle and bottom LEDs row 
